@@ -260,11 +260,13 @@ def nonOverlappingTemplateMatchings(bitstring):
 
 def overlappingtemplatematching(bitstring):
     n = len(bitstring)
-    M = 5
+
+    #M = 20 for 1024 - 4096
+    M = 35
     K = 5
-    N = int(n // M)
-    m = 2
-    # m = int(math.log2(M))
+    N = n//M
+    m = 4
+
     pi = [0.0] * (6)
 
     print(f"MN = {M * N}\n n = {n}\n m = {m}\n N = {N}")
@@ -405,7 +407,7 @@ def approximate_entrophy(bitstring):
     #m = 1 for 64 and 128, 2 otherwise
     m = 2
     n = len(bitstring)
-    print(math.log2(n) - 5)
+
     ApEn = [0] * 2
     r = 0
     blocksize = m
@@ -625,21 +627,24 @@ if __name__ == "__main__":
     with open("data.e", "r") as e1:
         e_binary_rank = "".join([line.strip() for line in e1.readlines()])
 
-    # Tested and work:
+    # Tested and work for 64 and above:
     # print(f"Frequency test: {freq_monobit(e)}")
     # print(f"Block test: {block_freq(10, e)}")
     # print(f"Runs Test: {runs(e)}")
     # print(f"Longest Run Test: {longestrunofones(e_128)}")
-    # print(f"Rank test: {binary_matrix_rank(e_binary_rank[:256])}")
     # print(f"Discrete Fourier Transform: {discrete_fourier_transform(e_binary_rank[:256])}")
     # print(f"NonOverlappingTemplate Matching: {nonOverlappingTemplateMatchings(e_binary_rank[:256])}")
     # print(f'Serial: {serial(e_binary_rank[:64])}')
-    # print(f'Approximate Entrophy: {approximate_entrophy(e_binary_rank[:256])}')
     # print(f'Cusum: {cumulative_sums(e_binary_rank[:64])}')
     # print(f'RE: {random_excursions(e_binary_rank[:256])}')
     # print(f'REV: {random_excursions_variant(e_binary_rank[:64])}')
 
-    # Do not work:
-    print(f"OverlappingTemplate Matching: {overlappingtemplatematching(e_binary_rank[:256])}")
-    print(f"Universal: {universal(e_binary_rank[:256])}")
+    # Do not work for under 128:
+    # print(f'Approximate Entrophy: {approximate_entrophy(e_binary_rank[:128])}')
 
+    # Do not work for under 256:
+    # print(f"Universal: {universal(e_binary_rank[:256])}")
+    # print(f"Rank test: {binary_matrix_rank(e_binary_rank[:256])}")
+
+    # Do not work for under 1024:
+    # print(f"OverlappingTemplate Matching: {overlappingtemplatematching(e_binary_rank[:4096])}")
