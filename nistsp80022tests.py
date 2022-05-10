@@ -628,23 +628,35 @@ if __name__ == "__main__":
         e_binary_rank = "".join([line.strip() for line in e1.readlines()])
 
     # Tested and work for 64 and above:
-    # print(f"Frequency test: {freq_monobit(e)}")
-    # print(f"Block test: {block_freq(10, e)}")
-    # print(f"Runs Test: {runs(e)}")
-    # print(f"Longest Run Test: {longestrunofones(e_128)}")
-    # print(f"Discrete Fourier Transform: {discrete_fourier_transform(e_binary_rank[:256])}")
-    # print(f"NonOverlappingTemplate Matching: {nonOverlappingTemplateMatchings(e_binary_rank[:256])}")
-    # print(f'Serial: {serial(e_binary_rank[:64])}')
-    # print(f'Cusum: {cumulative_sums(e_binary_rank[:64])}')
-    # print(f'RE: {random_excursions(e_binary_rank[:256])}')
-    # print(f'REV: {random_excursions_variant(e_binary_rank[:64])}')
+    #   a. Recommended input size of 100+ bits:
+    # print(f"1. Frequency test: {freq_monobit(e)}")
+    # print(f"2. Block test: {block_freq(10, e)}")
+    # print(f"3. Runs Test: {runs(e)}")
+    # print(f'13. Cusum: {cumulative_sums(e_binary_rank[:64])}')
+
+    #   b. Recommended input size of 128+ bits:
+    # print(f"4. Longest Run Test: {longestrunofones(e_128)}")
+
+    #   c. Recommended input size of 1,000+ bits:
+    # print(f"6. Discrete Fourier Transform: {discrete_fourier_transform(e_binary_rank[:256])}")
+
+    #   d. No recommended input size, mathematical requirements:
+    # print(f"7. NonOverlappingTemplate Matching: {nonOverlappingTemplateMatchings(e_binary_rank[:256])}")
+    # print(f'11. Serial: {serial(e_binary_rank[:64])}')
+
+    #   b. Recommended input size of 1,000,000+ bits:
+    # print(f'14. RE: {random_excursions(e_binary_rank[:256])}')
+    # print(f'15. REV: {random_excursions_variant(e_binary_rank[:64])}')
 
     # Do not work for under 128:
-    # print(f'Approximate Entrophy: {approximate_entrophy(e_binary_rank[:128])}')
+    #   a. No recommended input size, mathematical requirements:
+    # print(f'12. Approximate Entrophy: {approximate_entrophy(e_binary_rank[:128])}')
 
     # Do not work for under 256:
-    # print(f"Universal: {universal(e_binary_rank[:256])}")
-    # print(f"Rank test: {binary_matrix_rank(e_binary_rank[:256])}")
+    #   a. No recommended input size, mathematical requirements/suggestions:
+    # print(f"9. Universal: {universal(e_binary_rank[:256])}")
+    # print(f"5. Rank test: {binary_matrix_rank(e_binary_rank[:256])}")
 
     # Do not work for under 1024:
-    # print(f"OverlappingTemplate Matching: {overlappingtemplatematching(e_binary_rank[:4096])}")
+    #   a. No input size recommended, just mathematical requirements:
+    # print(f"8. OverlappingTemplate Matching: {overlappingtemplatematching(e_binary_rank[:4096])}")
